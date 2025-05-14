@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /usr/local/openmpi/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -O3 -march=native -Wall -pedantic -o CMakeFiles/allgather_merge.dir/main.cpp.o -c /Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/main.cpp",
+  "file": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/main.cpp",
+  "output": "CMakeFiles/allgather_merge.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /usr/local/openmpi/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -O3 -march=native -Wall -pedantic -o CMakeFiles/allgather_merge.dir/baseline.cpp.o -c /Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/baseline.cpp",
+  "file": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/baseline.cpp",
+  "output": "CMakeFiles/allgather_merge.dir/baseline.cpp.o"
+},
+{
+  "directory": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /usr/local/openmpi/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -O3 -march=native -Wall -pedantic -o CMakeFiles/allgather_merge.dir/algorithm1.cpp.o -c /Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/algorithm1.cpp",
+  "file": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/algorithm1.cpp",
+  "output": "CMakeFiles/allgather_merge.dir/algorithm1.cpp.o"
+},
+{
+  "directory": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /usr/local/openmpi/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -O3 -march=native -Wall -pedantic -o CMakeFiles/allgather_merge.dir/algorithm2.cpp.o -c /Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/algorithm2.cpp",
+  "file": "/Users/annaclara/Documents/TUW/SS25/HPC/Project/sources/algorithm2.cpp",
+  "output": "CMakeFiles/allgather_merge.dir/algorithm2.cpp.o"
+}
+]

@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{xspace}
+\usepackage[utf8]{inputenc}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\renewcommand{\arraystretch}{1.4}
+\setlength{\tabcolsep}{4pt}
+
+  \sisetup{
+        scientific-notation = true,
+    exponent-mode = input,
+    round-mode = places,
+    round-precision = 2,  % Changed from 1 to 2
+    group-digits = false,
+    tight-spacing = true,
+    table-format = 1.2e+1,  % Changed from 1.5 to 1.2
+    table-number-alignment = center,
+    table-auto-round = true
+  }
+
+\lstset{
+  language=C,
+  frame=single,
+  basicstyle=\ttfamily\footnotesize
+}
+
+% Macro for MPI_Allgather. Use it for typesetting MPI_Allgather: \mpiallgather
+\newcommand{\mpiallgather}{\texttt{MPI\_\-Allgather}\xspace}
+% You can add similar macros here for better typesetting
+
+\title{HPC Project Report 2025}
+\author{Student Names}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{First Section}
+
+It is a good idea to use sections to structure your report. Use
+Table~\ref{tab:performance_comparison} as a template for your reporting your
+findings.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% RESULTS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+  \centering
+  \caption{Performance of algorithms (execution time in microseconds). Configuration
+    with  \num{20} Nodes $\times$ \num{10} PPN.}
+  \label{tab:performance_comparison}
+  \scriptsize
+  \begin{tabular}{
+    |l|
+    c|
+    S[table-format=1.2e+1]|  % Consistent format for all columns
+    S[table-format=1.2e+1]|
+    S[table-format=1.2e+1]|
+    S[table-format=1.2e+1]|
+    S[table-format=1.2e+1]|
+    S[table-format=1.2e+1]|
+  }
+    \hline
+    \multirow{2}{*}{\textbf{Algorithm}} &
+    \multirow{2}{*}{\textbf{Type}} &
+    \multicolumn{6}{c|}{\textbf{Message size (number of elements)}} \\
+    \cline{3-8}
+    & & {\textbf{1}} & {\textbf{10}} & {\textbf{100}} & {\textbf{1000}} & {\textbf{10000}} & {\textbf{100000}} \\
+    \hline
+% You can paste your results here
+\multirow{3}{*}{Baseline}
+& 0  & 2.00e+00 & 1.40e+00 & 5.60e+00 & 3.82e+01 & 3.61e+02 & 3.67e+03 \\
+\cline{2-8}
+& 1  & 1.00e+00 & 2.70e+00 & 5.00e+00 & 3.69e+01 & 2.92e+02 & 2.67e+03 \\
+\cline{2-8}
+& 2  & 9.00e-01 & 1.40e+00 & 6.40e+00 & 2.86e+01 & 2.79e+02 & 2.70e+03 \\
+\hline
+\multirow{3}{*}{Bruck}
+& 0  & 1.80e+00 & 1.40e+00 & 5.00e+00 & 4.10e+01 & 3.61e+02 & 3.61e+03 \\
+\cline{2-8}
+& 1  & 1.00e+00 & 1.30e+00 & 4.70e+00 & 2.89e+01 & 2.49e+02 & 2.63e+03 \\
+\cline{2-8}
+& 2  & 2.90e+00 & 1.00e+00 & 4.40e+00 & 2.70e+01 & 2.47e+02 & 2.62e+03 \\
+\hline
+\multirow{3}{*}{Circulant}
+& 0  & 1.40e+00 & 1.20e+00 & 4.40e+00 & 1.81e+01 & 1.49e+02 & 1.81e+03 \\
+\cline{2-8}
+& 1  & 1.00e+00 & 1.20e+00 & 4.80e+00 & 2.54e+01 & 2.83e+02 & 2.54e+03 \\
+\cline{2-8}
+& 2  & 9.00e-01 & 3.00e+00 & 3.90e+00 & 2.45e+01 & 3.77e+02 & 2.57e+03 \\
+    \hline
+% End of your results
+  \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
