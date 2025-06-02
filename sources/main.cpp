@@ -1,3 +1,9 @@
+/*
+cmake --build build --parallel
+mpirun -np 5 ./build/allgather_merge -a 1 -c
+
+*/
+
 /* Placeholder code for the distributed allgather-merge project*/
 /* (C) Jesper Larsson Traff, Sascha Hunold, Ioannis Vardas, HPC 2025 */
 
@@ -317,36 +323,33 @@ int main(int argc, char *argv[]) {
   }
   // if the message size is 0, we run all measurements
   if (options->msg_size == 0) {
-
-    for (k = 0; k < ALGORITHMS;
-         k++) { // the algorithm: 0) Baseline, 1) Bruck, 2) Circulant
+    // only run selected algorithm
+    int k = options->algorithm;
+    if (rank == 0 && !options->check) {
+      std::cout << "\\multirow{" << ALGORITHMS << "}{*}{" << algorithms[k] << "}\n";
+      std::cout.flush();
+    }
+    for (i = 0; i < INPUT_TYPES; ++i) { // Types 0, 1, 2
       if (rank == 0 && !options->check) {
-        std::cout << "\\multirow{"<<ALGORITHMS<<"}{*}{" << algorithms[k] << "}\n";
+        std::cout << "& " << i << " ";
         std::cout.flush();
       }
-      for (i = 0; i < INPUT_TYPES; ++i) { // Types 0, 1, 2
-        if (rank == 0 && !options->check) {
-          std::cout << "& " << i << " ";
-          std::cout.flush();
-        }
-        for (j = 0; j < static_cast<int>(std::size(msg_sizes));
-             ++j) { // Message sizes
-          run_all_measurements(rank, size, k, j, i, MPI_COMM_WORLD, true);
-        }
-        if (rank == 0) {
-          // Add row ending inside the loop
-          if (!options->check) {
-            if (i == INPUT_TYPES - 1) {
-              std::cout << "\\hline\n";
-            } else {
-              std::cout << "\\cline{" << INPUT_TYPES - 1 << "-"
-                        << INPUT_TYPES - 1 + MSG_SIZES << "}\n";
-            }
-            std::cout.flush();
+      for (j = 0; j < static_cast<int>(std::size(msg_sizes)); ++j) {
+        run_all_measurements(rank, size, k, j, i, MPI_COMM_WORLD, true);
+      }
+      if (rank == 0) {
+        if (!options->check) {
+          if (i == INPUT_TYPES - 1) {
+            std::cout << "\\hline\n";
+          } else {
+            std::cout << "\\cline{" << INPUT_TYPES - 1 << "-"
+                      << INPUT_TYPES - 1 + MSG_SIZES << "}\n";
           }
+          std::cout.flush();
         }
       }
     }
+  
   } else {
     run_all_measurements(rank, size, options->algorithm, options->msg_size,
                          options->input_type, MPI_COMM_WORLD, false);
